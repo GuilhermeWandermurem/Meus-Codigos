@@ -57,15 +57,20 @@ public class Exerc {
 		case "drama":
 			d[d1] = es2;
 			d1++;
+			System.out.println("O filme "+es2+" foi atribuido ao genero drama");
 			break;
 		case "terror":
 			t[t1] = es2;
 			t1++;
+			System.out.println("O filme "+es2+" foi atribuido ao genero terror");
 			break;
 		case "acao":
 			a[a1] = es2;
 			a1++;
+			System.out.println("O filme "+es2+" foi atribuido ao genero ação");
 			break;
+			default:
+				System.out.println("digite apenas os generos drama, ação ou terror.");
 		}
 		for (String s : d) {
 			if (s == null)
@@ -123,10 +128,13 @@ public class Exerc {
 			}
 			System.out.println("Qual filme deseja excluir ?");
 			String es = scan.nextLine();
-			for (int i = 0; i < d.length; i++) {
-				if (es.equalsIgnoreCase(d[i])) {
-					d[i] = null;
+			
+			for (int i = 0; i < e.length; i++) {
+				if (es.equalsIgnoreCase(e[i])) {
+					e[i] = null;
+					System.out.println("o filme "+es+" foi excluido com sucesso.");
 					main(null);
+					
 				}
 			}
 			System.out.println("Não existe nenhum filme com esse nome.");
