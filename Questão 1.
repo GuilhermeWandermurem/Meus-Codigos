@@ -1,0 +1,136 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Exerc {
+	static int d1 = 0;
+	static int t1 = 0;
+	static int a1 = 0;
+	static String[] a = new String[10];
+	static String[] t = new String[10];
+	static String[] d = new String[10];
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		while (true) {
+			int es;
+			System.out
+					.println("Bem vindo ao Catalogo de filmes, oque deseja fazer?\n1-incluir filmes no arquivo.\n2-consultar o total de filmes de um genero\n3-excluir um filme de um arquivo.");
+			es = scan.nextInt();
+			switch (es) {
+			case 1:
+				incluir();
+				break;
+			case 2:
+				consultar();
+				break;
+			case 3:
+				System.out
+						.println("De qual genero você deseja excluir um filme ?\n1-drama\n2-terror\n3-ação");
+				int e = scan.nextInt();
+				switch (e) {
+				case 1:
+					excluir(d);
+					break;
+				case 2:
+					excluir(t);
+					break;
+				case 3:
+					excluir(a);
+					break;
+				}
+			}
+		}
+	}
+
+	static void incluir() {
+		Scanner scan = new Scanner(System.in);
+		String g;
+		String es2 = null;
+		System.out.println("qual o genero do filme ?");
+		g = scan.nextLine();
+		System.out.println("Digite o nome do filme ou para sair escreva'sair'");
+		es2 = scan.nextLine();
+		if (es2.equalsIgnoreCase("sair")) {
+			System.exit(1);
+		}
+		switch (g) {
+		case "drama":
+			d[d1] = es2;
+			d1++;
+			break;
+		case "terror":
+			t[t1] = es2;
+			t1++;
+			break;
+		case "acao":
+			a[a1] = es2;
+			a1++;
+			break;
+		}
+		for (String s : d) {
+			if (s == null)
+				continue;
+			System.out.print(s + ", ");
+		}
+		System.out.println(" ");
+
+	}
+
+	static void consultar() {
+		Scanner scan = new Scanner(System.in);
+		System.out
+				.println("Qual genero deseja procurar? \n1-drama\n2-terror\n3-ação");
+		int e = scan.nextInt();
+		int d1 = 0;
+		int t1 = 0;
+		int a1 = 0;
+		switch (e) {
+		case 1:
+			for (int i = 0; i < d.length; i++) {
+				if (d[i] != null) {
+					d1 += 1;
+				}
+			}
+			System.out.println("O genero drama possui " + d1 + " filme(s)");
+			break;
+		case 2:
+			for (int i = 0; i < t.length; i++) {
+				if (t[i] != null) {
+					t1 += 1;
+				}
+			}
+			System.out.println("O genero terror possui " + t1 + " filme(s)");
+			break;
+		case 3:
+			for (int i = 0; i < a.length; i++) {
+				if (a[i] != null) {
+					a1 += 1;
+				}
+			}
+			System.out.println("O genero ação possui " + a1 + " filme(s)");
+			break;
+		}
+		System.out.println(" ");
+	}
+
+	static void excluir(String[] e) {
+		while (true) {
+			Scanner scan = new Scanner(System.in);
+			for (String s : e) {
+				if (s == null)
+					continue;
+				System.out.println(s);
+			}
+			System.out.println("Qual filme deseja excluir ?");
+			String es = scan.nextLine();
+			for (int i = 0; i < d.length; i++) {
+				if (es.equalsIgnoreCase(d[i])) {
+					d[i] = null;
+					main(null);
+				}
+			}
+			System.out.println("Não existe nenhum filme com esse nome.");
+
+		}
+	}
+}
