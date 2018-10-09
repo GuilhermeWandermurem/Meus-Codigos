@@ -1,0 +1,32 @@
+
+public class Funcionario {
+
+	String nome;
+	int horasT;
+	String categoria;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getHorasT() {
+		return horasT;
+	}
+
+	public void setHorasT(int horasT) {
+		this.horasT = horasT;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+}
