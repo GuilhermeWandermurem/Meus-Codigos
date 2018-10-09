@@ -69,7 +69,9 @@ public class Empresa {
 
 		System.out.println("Bem vindo a sua empresa, oq deseja fazer ?\n" + "1-Cadastrar funcionarios.\n"
 				+ "2-Alterar o numero de horas trabalhadas por um funcionario.\n"
-				+ "3-Imprimir todos os dados dos funcionarios.");
+				+ "3-Imprimir todos os dados dos funcionarios.\n"
+				+ "4-Sair.");
+		
 		int escolhaMenu = scan.nextInt();
 
 		switch (escolhaMenu) {
@@ -88,6 +90,8 @@ public class Empresa {
 				;
 			Imprimir(funcionario);
 			break;
+		case 4:
+			System.exit(0);
 		}
 	}
 
