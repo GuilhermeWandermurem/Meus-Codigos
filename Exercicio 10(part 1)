@@ -58,7 +58,7 @@ public class Empresa {
 	public static boolean teste(boolean teste) {
 		if (teste == false) {
 			System.out.println("ERRO!!!");
-			System.out.println("Você precisa cadastrar os nomes dos funcionarios primeiro.\n");
+			System.out.println("Você precisa cadastrar os funcionarios primeiro.\n");
 		} else {
 			System.out.println("Autenticação feita com sucesso.");
 		}
