@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class Empresa {
+	static Scanner scan = new Scanner(System.in);
+	static Funcionario func[];
+	static boolean teste = false;
+	static int funcionario = 0;
+
+	public static void main(String[] args) {
+		while (true) {
+			Menu();
+		}
+
+	}
+
+	static int Cadastra() {
+		int funcionarios;
+		do {
+			System.out.println("Insira a quantidade de funcionarios que sua empresa tem: ");
+			funcionarios = scan.nextInt();
+		} while (funcionarios > 19 && funcionarios > 0);
+
+		func = new Funcionario[funcionarios];
+
+		for (int i = 0; i < funcionarios; i++) {
+			func[i] = new Funcionario();
+			System.out.println("Insira o nome do " + (i + 1) + "º funcionario: ");
+			String nome = scan.next();
+			func[i].setNome(nome);
+
+			System.out.println("Insira a quantidade de horas trabalhadas pelo " + func[i].getNome());
+			func[i].setHorasT(scan.nextInt());
+			System.out.println("Insira a categoria do " + func[i].getNome() + " (O para operario e G para gerente)");
+			func[i].setCategoria(scan.next());
+		}
+		return funcionarios;
+
+	}
+
+	static void AlteraHoras(int funcionarios, Funcionario func[]) {
+
+		for (int i = 0; i < funcionarios; i++) {
+			if (func[i] != null)
+				System.out.println(func[i].getNome());
+		}
+		System.out.println("De qual funcionario deseja alterar o numero de horas de trabalho ?");
+		String funcionario = scan.next();
+
+		for (int i = 0; i < funcionarios; i++) {
+			if (func[i].getNome().equalsIgnoreCase(funcionario)) {
+				System.out.println("Digite o novo horario do " + func[i].getNome());
+				func[i].setHorasT(scan.nextInt());
+			}
+		}
+
+	}
+
+	public static boolean teste(boolean teste) {
+		if (teste == false) {
+			System.out.println("ERRO!!!");
+			System.out.println("Você precisa cadastrar os nomes dos funcionarios primeiro.\n");
+		} else {
+			System.out.println("Autenticação feita com sucesso.");
+		}
+		return teste;
+	}
+
+	public static void Menu() {
+
+		System.out.println("Bem vindo a sua empresa, oq deseja fazer ?\n" + "1-Cadastrar funcionarios.\n"
+				+ "2-Alterar o numero de horas trabalhadas por um funcionario.\n"
+				+ "3-Imprimir todos os dados dos funcionarios.");
+		int escolhaMenu = scan.nextInt();
+
+		switch (escolhaMenu) {
+		case 1:
+			teste = true;
+			funcionario = Cadastra();
+			break;
+		case 2:
+			teste(teste);
+			if (teste == true)
+				AlteraHoras(funcionario, Empresa.func);
+			break;
+		case 3:
+			teste(teste);
+			if (teste == true)
+				;
+			Imprimir(funcionario);
+			break;
+		}
+	}
+
+	public static void Imprimir(int funcionario) {
+
+		for (int i = 0; i < funcionario; i++) {
+			double acrescimo = 1;
+			System.out.println("Nome: " + func[i].getNome());
+			System.out.println("Horas trabalhadas: " + func[i].getHorasT());
+			System.out.println("Categoria: " + func[i].getCategoria());
+			if (func[i].getCategoria().equalsIgnoreCase("G")) {
+				acrescimo = 1.15;
+			}
+			System.out.println("Salário: " + ((func[i].getHorasT() * 112) * acrescimo));
+			System.out.println("");
+		}
+
+	}
+}
